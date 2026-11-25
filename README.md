@@ -2,6 +2,8 @@
 
 # MCPAPI
 
+[![MCPapi MCP connector – tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/one.mcpapi/mcpapi/badges/score.svg)](https://glama.ai/mcp/connectors/one.mcpapi/mcpapi)
+
 **Every API your agent needs, through one MCP server and three tools.**
 
 MCPAPI is a hosted MCP server. Add any OpenAPI or Swagger spec, Postman collection or MCP server to your workspace, or enable a public connector, and your agent reaches all of them through three tools: it searches in plain words, reads only the operation it picked, and runs it.
