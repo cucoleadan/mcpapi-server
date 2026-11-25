@@ -3,7 +3,9 @@ title: The three tools
 description: search_tools, get_tool_details and execute_tool, with what each takes and returns.
 ---
 
-Your agent sees three tools, about 400 tokens of definitions in all. It finds an operation, reads its schema, and runs it.
+Your agent sees three tools, about 470 tokens of definitions in all. It finds an operation, reads its schema, and runs it.
+
+`search_tools` and `get_tool_details` are marked read-only (MCP `readOnlyHint`). `execute_tool` is marked as able to change data, including destructive operations, on outside APIs (`destructiveHint`, `openWorldHint`), so clients can ask before it runs.
 
 ## search_tools
 

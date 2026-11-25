@@ -2,13 +2,13 @@
 
 # MCPAPI
 
-[![MCPapi MCP connector – tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/one.mcpapi/mcpapi/badges/score.svg)](https://glama.ai/mcp/connectors/one.mcpapi/mcpapi)
+[![MCPapi MCP connector – tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/one.mcpapi/mcpapi/badges/score.svg)](https://glama.ai/mcp/connectors/one.mcpapi/mcpapi) [![mcptry](https://mcptry.com/badge/com.getmcpapi/mcpapi)](https://mcptry.com/servers/com.getmcpapi/mcpapi)
 
 **Every API your agent needs, through one MCP server and three tools.**
 
 MCPAPI is a hosted MCP server. Add any OpenAPI or Swagger spec, Postman collection or MCP server to your workspace, or enable a public connector, and your agent reaches all of them through three tools: it searches in plain words, reads only the operation it picked, and runs it.
 
-Connected directly, every tool definition is sent with every request. Stripe's API has 612 operations at roughly 300 tokens each; through MCPAPI the agent carries about 400 tokens of tool definitions, whatever you connect.
+Connected directly, every tool definition is sent with every request. Stripe's API has 612 operations at roughly 300 tokens each; through MCPAPI the agent carries about 470 tokens of tool definitions, whatever you connect.
 
 [Website](https://getmcpapi.com) · [Documentation](https://docs.mcpapi.one) · Server URL: `https://mcpapi.one/mcp` (streamable HTTP) · Sign-in: OAuth 2.1 or an API key
 
