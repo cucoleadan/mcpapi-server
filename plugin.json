@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mcpapi",
+  "version": "1.0.1",
+  "description": "One MCP URL for every API and MCP server you use, your own APIs included. Sign in with OAuth on first use.",
+  "author": { "name": "MCPAPI", "url": "https://getmcpapi.com" },
+  "homepage": "https://getmcpapi.com",
+  "repository": "https://github.com/cucoleadan/mcpapi-server",
+  "license": "MIT",
+  "keywords": ["mcp", "api", "openapi", "gateway", "oauth"]
+}
