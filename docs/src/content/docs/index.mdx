@@ -1,0 +1,47 @@
+---
+title: What is MCPAPI?
+description: MCPAPI turns any API or MCP server into three MCP tools, so your agent can use all of them without loading every definition.
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import Screenshot from '../../components/Screenshot.astro';
+
+MCPAPI is a hosted MCP server. You add APIs from their OpenAPI or Swagger specs, Postman collections or MCP servers, or enable public connectors. Your agent reaches all of them through one URL and three tools: it searches in plain words, reads only the operation it picked, and runs it.
+
+Connected directly, every tool definition is sent with every request: Stripe's API alone has 612 operations at roughly 300 tokens each. Through MCPAPI your agent carries about 400 tokens of tool definitions, however many APIs you connect.
+
+<Screenshot name="overview" alt="The Overview page: connected agents and APIs, context saved and a year of activity" />
+
+## How it works
+
+<CardGrid>
+	<Card title="1. Add an API" icon="document">
+		Paste a spec URL or an MCP server's URL. MCPAPI reads the name, address and sign-in, and indexes every operation.
+	</Card>
+	<Card title="2. Connect your agent" icon="puzzle">
+		Add `https://mcpapi.one/mcp` to Claude, ChatGPT, Cursor, VS Code, Claude Code, Codex or any MCP client.
+	</Card>
+	<Card title="3. Ask" icon="comment">
+		Your agent searches, reads the one operation it needs and runs it. Every call is checked against your rules and logged.
+	</Card>
+	<Card title="4. Manage" icon="setting">
+		Give each person read or write per API, keep sandbox and live accounts apart, and ask before writes run.
+	</Card>
+</CardGrid>
+
+## Key ideas
+
+- **Workspace**: your team's APIs, people, agents and logs. Every call runs as one member of one workspace.
+- **API** (or **source**): an API or MCP server you added or enabled. Each operation becomes a tool with an id like `stripe.PostRefunds`.
+- **Connection**: an account the API is called with, such as `sandbox` or `live`, the team's or one person's own.
+- **Risk**: every operation is `read`, `write` or `destructive`. Access, keys and approvals are judged on it.
+- **Credits**: a successful run costs one. Searches, reading tool details and failed runs are free.
+
+## Start here
+
+<CardGrid>
+	<LinkCard title="Add your first API" href="/getting-started/first-api/" description="From a spec URL, an MCP server or the public connectors." />
+	<LinkCard title="Connect your agent" href="/getting-started/connect/" description="Steps for every MCP client we support." />
+	<LinkCard title="The three tools" href="/reference/tools/" description="What your agent sends and gets back." />
+	<LinkCard title="Authentication" href="/reference/authentication/" description="OAuth for MCP clients, keys for scripts." />
+</CardGrid>

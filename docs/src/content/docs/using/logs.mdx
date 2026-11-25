@@ -1,0 +1,16 @@
+---
+title: Logs
+description: Every search, read and run your agents make, and why a call failed.
+---
+
+import Screenshot from '../../../components/Screenshot.astro';
+
+The **Logs** page records every call your agents make: which tool, which operation, who made it, how long it took and which account it used.
+
+<Screenshot name="logs" alt="The Logs page: searches, tool details and runs with their status" />
+
+- **Searches** with their query.
+- **Tool details** with the operation they read.
+- **Runs** with the names of their arguments, never the values, and never your keys.
+- **Refusals** with the rule that stopped them; API errors quote the API.
+- **Approvals**: a call that asked first shows that it was approved, and where.

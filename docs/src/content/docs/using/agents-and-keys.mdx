@@ -1,0 +1,26 @@
+---
+title: Agents and keys
+description: The AI apps and keys connected to your workspace, and how to narrow what a key can do.
+---
+
+import Screenshot from '../../../components/Screenshot.astro';
+
+The **Connected Agents** page lists every AI app that signed in and every key, with its calls and failures over the last 7 days, its last call, and its log one click away.
+
+<Screenshot name="agents" alt="The Connected Agents page: apps and keys with their calls and failures" />
+
+## Apps that sign in
+
+Claude, ChatGPT, Cursor, VS Code and other MCP clients sign in with OAuth, as the person who approved them. See [Connect your agent](/getting-started/connect/). Disconnect one here at any time.
+
+## Keys
+
+For scripts and clients that can't sign in, create a key. It acts as you, and can be narrowed:
+
+- **Read-only**: runs only `read` operations.
+- **Some APIs only**: other APIs' tools are not found or run.
+- **A monthly cap on runs.**
+- **Pinned to one connection per API**, such as `sandbox`.
+- **Manage**: off by default. Turn it on to let the key use the [management API](/reference/management-api/).
+
+Send it as `Authorization: Bearer <key>`. Agents can't create keys themselves. Revoke a key on the same page.

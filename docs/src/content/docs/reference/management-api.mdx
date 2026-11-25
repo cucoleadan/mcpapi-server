@@ -1,0 +1,25 @@
+---
+title: Management API
+description: Manage your workspace's APIs, members, access, keys, logs and prompts over HTTP.
+---
+
+Everything the dashboard does is also an HTTP API at `https://mcpapi.one/v1`, described by its [OpenAPI spec](https://mcpapi.one/v1/openapi.yaml).
+
+## Access
+
+Call it with `Authorization: Bearer <key>`, using a key made on the dashboard's **Connected Agents** page with **manage** turned on. Keys can't use the management API unless that is on, so an agent's key can't make keys or change access. What a call may change is still decided by the role of the member who made the key.
+
+## What it covers
+
+| Area | Paths |
+| --- | --- |
+| APIs and MCP servers | `/v1/sources`, their tools, imports, credentials, connections and OAuth |
+| Public connectors | `/v1/catalog` |
+| Team | `/v1/members`, `/v1/invites`, `/v1/grants` |
+| Agents and keys | `/v1/agents`, `/v1/keys` |
+| Workspace | `/v1/workspace`, `/v1/workspaces` |
+| Activity and logs | `/v1/activity`, `/v1/logs` |
+| Prompts | `/v1/prompts` |
+| Billing | `/v1/billing` |
+
+The same operations are available to your agent through the [MCPAPI connector](/reference/tools/#the-mcpapi-connector), with your role.

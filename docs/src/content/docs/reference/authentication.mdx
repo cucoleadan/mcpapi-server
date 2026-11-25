@@ -1,0 +1,35 @@
+---
+title: Authentication
+description: How MCP clients and scripts sign in to MCPAPI, with OAuth 2.1 or an API key.
+---
+
+Every call runs as one workspace member, with that member's access. There is no anonymous access, and agents cannot create accounts, workspaces or keys on their own: a person signs up and approves every client or key.
+
+## Endpoints
+
+| | |
+| --- | --- |
+| MCP server | `https://mcpapi.one/mcp` |
+| Management API | `https://mcpapi.one/v1` ([OpenAPI](https://mcpapi.one/v1/openapi.yaml)) |
+| Protected resource metadata | `https://mcpapi.one/.well-known/oauth-protected-resource` |
+| Authorization server metadata | `https://mcpapi.one/.well-known/oauth-authorization-server` |
+
+## OAuth 2.1 (MCP clients)
+
+1. Read the protected resource metadata to find the authorization server.
+2. Register the client with dynamic client registration (RFC 7591). No pre-shared client ID is needed.
+3. Run the authorization code flow with PKCE (S256). A person signs in with their email (a sign-in link, no password), picks the workspace and approves the client.
+4. Call the MCP server with `Authorization: Bearer <access_token>`. Refresh it with the refresh token when it expires.
+
+The token acts as the person who approved it, in the workspace they chose. They can disconnect the client at any time from the dashboard's Connected Agents page.
+
+## API key
+
+1. A workspace member creates a key on the dashboard's **Connected Agents** page. It can be limited; see [Agents and keys](/using/agents-and-keys/).
+2. Call `https://mcpapi.one/mcp` or the management API with `Authorization: Bearer <key>`.
+
+A key acts as the member who made it. Revoke it on the same page.
+
+## For agents
+
+[mcpapi.one/auth.md](https://mcpapi.one/auth.md) has the same instructions in a form a coding agent can follow to set itself up.

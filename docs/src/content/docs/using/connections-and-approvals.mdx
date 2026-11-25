@@ -1,0 +1,27 @@
+---
+title: Connections and approvals
+description: Several accounts per API, each person's own account, and asking a person before a call runs.
+---
+
+import Screenshot from '../../../components/Screenshot.astro';
+
+A **connection** is an account MCPAPI calls an API with. Keys are stored encrypted and never shown again.
+
+<Screenshot name="connections" alt="Stripe's page: the team account with live and sandbox environments" />
+
+## Environments
+
+An API can have several team connections, such as `live` and `sandbox`. One is the default. When an API has more than one, `search_tools` names them, and the agent can pick one by name with `execute_tool`'s `connection` argument; otherwise it uses the default.
+
+## Your own account
+
+Anyone can connect their own account to an API. Only their own agents use it, acting as them. Admins can require it, so every person's runs use their own account and none use a shared one.
+
+## Ask before it runs
+
+Each team connection can ask a person before a call runs: never, before writes, before destructive calls, or always. The rule is judged on the operation's risk.
+
+- In clients that support it, the person is asked in the chat, with a yes or no form.
+- Otherwise `execute_tool` returns `pending_approval` with a link. The person opens it, checks the call and approves it; the agent then makes the same call again and it runs once.
+
+An approval is good for 15 minutes and for that exact call. An agent can never approve itself. The logs record that a call was approved, and where.

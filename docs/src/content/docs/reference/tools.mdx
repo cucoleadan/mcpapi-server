@@ -1,0 +1,66 @@
+---
+title: The three tools
+description: search_tools, get_tool_details and execute_tool, with what each takes and returns.
+---
+
+Your agent sees three tools, about 400 tokens of definitions in all. It finds an operation, reads its schema, and runs it.
+
+## search_tools
+
+Finds operations for a task described in plain words.
+
+| Argument | Type | |
+| --- | --- | --- |
+| `query` | string, 1 to 500 characters | What you want to do. |
+| `source` | string, optional | Only this API, by its slug, e.g. `"stripe"`. |
+| `limit` | integer 1 to 20, optional | How many results. Default 5. |
+
+Returns a `search_id` and `results`, each with:
+
+- `id`: the operation's id, `{api}.{operation}`, e.g. `stripe.PostRefunds`.
+- `source`: the API's slug.
+- `kind` and `summary`: what the operation is and does.
+- `risk`: `read`, `write` or `destructive`.
+
+Where an API in the results has more than one connection, or one that asks before it runs, `connections` names them once per API, e.g. `"stripe": "live (default) (asks the person before writes), sandbox"`.
+
+On the paid plan, search is reranked: the best 5 of the top 20.
+
+## get_tool_details
+
+Returns one operation's description, risk and `input_schema`, so the agent can build its arguments.
+
+| Argument | Type | |
+| --- | --- | --- |
+| `id` | string | An id from `search_tools`. |
+| `field` | string, optional | One nested argument to expand. |
+
+The schema is trimmed to the top level: a nested argument is listed by its `fields`. Pass `field` to get that argument's full schema. This keeps a large operation's schema small until the agent needs the detail.
+
+## execute_tool
+
+Runs an operation.
+
+| Argument | Type | |
+| --- | --- | --- |
+| `id` | string | The operation's id. |
+| `arguments` | object, optional | Must match the operation's `input_schema`. |
+| `search_id` | string, optional | The search that found this tool, for the logs. |
+| `connection` | string, optional | One of the API's connections that search listed, e.g. `"sandbox"`. Default: the usual one. |
+
+Returns a `status`:
+
+- `completed`: the operation ran; the API's response is the result.
+- `denied`: a rule stopped it. The reason says which: the member's access, the key's limits, or the plan's credits.
+- `pending_approval`: the connection asks a person first. See [Connections and approvals](/using/connections-and-approvals/).
+- `error`: the API or the request failed. API errors quote the API.
+
+If the API answers 429, the result includes `retry_after_seconds`.
+
+## The MCPAPI connector
+
+Your workspace itself can be one of the APIs: adding APIs, inviting people, setting access, making keys and reading logs are tools too, found by the same search and run with your role. Billing and approvals stay in the dashboard.
+
+## Saved prompts
+
+Prompts saved in the dashboard are listed by every connected client as MCP prompts. See [Prompts](/using/prompts/).

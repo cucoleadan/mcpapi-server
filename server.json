@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.getmcpapi/mcpapi",
+  "title": "MCPAPI",
+  "description": "One MCP URL for every API and MCP server you use, your own APIs included.",
+  "repository": {
+    "url": "https://github.com/cucoleadan/mcpapi-server",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "websiteUrl": "https://getmcpapi.com",
+  "icons": [
+    {
+      "src": "https://getmcpapi.com/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcpapi.one/mcp"
+    }
+  ]
+}

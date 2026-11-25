@@ -1,0 +1,20 @@
+---
+title: Limits
+description: Rate limits and the rules every API call follows.
+---
+
+## Rate limits
+
+- 120 requests a minute per key or member.
+- 30 failed key checks a minute per IP address.
+
+Both answer `429` with a `Retry-After` header. They are counted per Cloudflare location, so they are approximate.
+
+## How API calls are made
+
+- Only to the API's stored base URL, over HTTPS. Path parameters are encoded.
+- No redirects to another origin.
+- A 30-second timeout.
+- Responses are cut at 100 KB (an MCP server's rich results at 10 MB).
+- Form and multipart bodies are supported; cookie parameters are sent as one `Cookie` header.
+- If the API answers `429`, the agent gets `retry_after_seconds`.

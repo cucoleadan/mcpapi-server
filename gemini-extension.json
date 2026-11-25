@@ -1,0 +1,10 @@
+{
+  "name": "mcpapi",
+  "version": "1.0.0",
+  "description": "One MCP URL for every API and MCP server you use, your own APIs included. Hosted at mcpapi.one; sign in with OAuth.",
+  "mcpServers": {
+    "mcpapi": {
+      "httpUrl": "https://mcpapi.one/mcp"
+    }
+  }
+}

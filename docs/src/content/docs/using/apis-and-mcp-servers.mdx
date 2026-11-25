@@ -1,0 +1,28 @@
+---
+title: APIs and MCP servers
+description: How an API or MCP server becomes tools your agent can search, and how to keep it up to date.
+---
+
+Each API or MCP server in your workspace is a **source**. Its operations become tools with ids like `stripe.PostRefunds`: the API's slug, then the operation's id. Your agent finds them with `search_tools`, never as a list of every definition.
+
+## Where they come from
+
+- **Public connectors**: ready-made APIs and MCP servers anyone can enable. Open **Public connectors**, enable one and add your key. They are free to enable, and their slugs are reserved.
+- **Your own APIs**: from an OpenAPI 3.x or Swagger 2.0 spec (one file or many) or a Postman collection, by URL or upload. On the paid plan.
+- **Your own MCP servers**: by URL, over streamable HTTP, with a key or OAuth sign-in. On the paid plan.
+
+Your own APIs are visible only to your workspace.
+
+## Import
+
+MCPAPI reads the API's name, base URL and sign-in from the spec, then indexes every operation with its summary, description and input schema. Each operation gets a risk: `read` for GET, `write` for POST, PUT and PATCH, `destructive` for DELETE. A spec's `x-risk` overrides it.
+
+Import costs 1 credit per 10 new or changed operations.
+
+## Re-import
+
+Open the API under **Connected APIs** and import again when the spec or the MCP server changes. Only new or changed operations cost credits; unchanged ones are kept as they were. Nothing is rechecked on a schedule.
+
+## Remove
+
+**Remove from workspace** on the API's page takes its tools away from every agent in the workspace.

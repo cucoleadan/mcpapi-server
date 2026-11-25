@@ -1,0 +1,132 @@
+---
+title: Connect your agent
+description: Add MCPAPI to Claude, ChatGPT, Cursor, VS Code, Claude Code, Codex and other MCP clients.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+Every client uses the same server URL:
+
+```
+https://mcpapi.one/mcp
+```
+
+Clients sign in with OAuth: a browser opens, you sign in with your MCPAPI email and pick the workspace. The dashboard's **Connected Agents** page has these steps too, with install links.
+
+<Screenshot name="agents" alt="The Connected Agents page: connected apps and keys with their calls and failures" />
+
+## Claude
+
+Claude on the web, desktop and Cowork. On Team and Enterprise plans an owner adds the connector in **Organization settings → Connectors** first; then you click **Connect**. Free plans allow one custom connector.
+
+<Steps>
+
+1. Open [Customize → Connectors](https://claude.ai/customize/connectors) in Claude.
+2. Click **+ Add**, then **Add custom connector**.
+3. Name it MCPAPI, paste the server URL and click **Continue**.
+4. Under **Authentication**, choose **Sign in now**. Keep the OAuth client Claude suggests (if signing in fails, choose **Register automatically**), then click **Add**.
+5. Sign in with your MCPAPI email and pick the workspace.
+
+</Steps>
+
+## ChatGPT
+
+ChatGPT on the web. Full access (reads and writes) is on Business and Enterprise/Edu; on Pro, custom servers can only read. In a Business workspace, an admin or owner adds it.
+
+<Steps>
+
+1. Open [Plugins](https://chatgpt.com/plugins) in ChatGPT.
+2. Click the **+** button, then **Add custom MCP server**.
+3. Name it MCPAPI. Under **Connection**, paste the server URL.
+4. Choose **OAuth** for authentication, tick **I understand and want to continue**, then click **Create as a plugin**.
+5. Install the plugin. Sign in with your MCPAPI email and pick the workspace.
+6. In a new chat, type **@** and pick MCPAPI.
+
+</Steps>
+
+## Cursor
+
+Add it to `~/.cursor/mcp.json`, or use the install link on the dashboard's Connected Agents page. Cursor asks you to sign in.
+
+```json
+{ "mcpServers": { "mcpapi": { "url": "https://mcpapi.one/mcp" } } }
+```
+
+## VS Code
+
+Use the install link on the dashboard's Connected Agents page, or add it to `.vscode/mcp.json`. Sign in when VS Code asks, then use it from Copilot Chat in agent mode.
+
+```json
+{ "servers": { "mcpapi": { "type": "http", "url": "https://mcpapi.one/mcp" } } }
+```
+
+## Claude Code
+
+```sh
+claude mcp add --transport http mcpapi https://mcpapi.one/mcp
+```
+
+Then type `/mcp`, pick mcpapi and choose to authenticate.
+
+## Codex
+
+```sh
+codex mcp add mcpapi --url https://mcpapi.one/mcp
+codex mcp login mcpapi
+```
+
+## Grok
+
+Grok on the web. In a Business or Enterprise team, an admin adds the connector in the xAI console first. Open [Connectors](https://grok.com/connectors), click **New Connector**, choose **Custom**, name it MCPAPI and paste the server URL.
+
+## Zed
+
+Open **Settings → AI → MCP Servers**, click **Add Server**, then **Add Remote Server**. Or add it to your `settings.json`:
+
+```json
+{ "context_servers": { "mcpapi": { "url": "https://mcpapi.one/mcp" } } }
+```
+
+## OpenCode
+
+```sh
+opencode mcp add mcpapi --url https://mcpapi.one/mcp
+opencode mcp auth mcpapi
+```
+
+Add `--global` to the first command to use it in every project.
+
+## Antigravity
+
+The Antigravity app, IDE and CLI share one MCP config. Add the server to `~/.gemini/config/mcp_config.json`:
+
+```json
+{ "mcpServers": { "mcpapi": { "serverUrl": "https://mcpapi.one/mcp" } } }
+```
+
+In the app, open **Customizations → Installed → MCP Servers** and click **Authenticate** next to mcpapi. In the CLI, type `/mcp`.
+
+## OpenClaw
+
+```sh
+openclaw mcp add mcpapi --url https://mcpapi.one/mcp --transport streamable-http --auth oauth --no-probe
+openclaw mcp login mcpapi
+```
+
+## Hermes Agent
+
+Add the server to `~/.hermes/config.yaml`, then run `hermes mcp login mcpapi` from a new terminal. In a running session, type `/reload-mcp`.
+
+```yaml
+mcp_servers:
+  mcpapi:
+    url: "https://mcpapi.one/mcp"
+    auth: oauth
+```
+
+## Any other MCP client
+
+Add a remote MCP server (streamable HTTP) with the server URL. It signs in with OAuth and dynamic client registration. A client that can't can send a key instead; see [Agents and keys](/using/agents-and-keys/).
+
+A coding agent can set itself up from [mcpapi.one/auth.md](https://mcpapi.one/auth.md).

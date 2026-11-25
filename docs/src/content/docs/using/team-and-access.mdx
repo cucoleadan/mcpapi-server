@@ -1,0 +1,25 @@
+---
+title: Team and access
+description: Roles, read or write access per API, and whose account each person's runs use.
+---
+
+import Screenshot from '../../../components/Screenshot.astro';
+
+Invite your team on the **Team** page. Every agent call runs as one member, with that member's access.
+
+<Screenshot name="team" alt="The Team page: members, their roles and their access to each API" />
+
+## Roles
+
+- **Owner** and **admin**: manage the workspace: APIs, connections, members, access and billing.
+- **Member**: uses what they are given.
+
+## Access per API
+
+Give each member `read` or `write` access to each API, or to all of them.
+
+- A `read` grant runs only `read` operations.
+- A `write` grant runs writes and destructive calls too.
+- Write tools stay visible to read members, so the agent can find them; running one is `denied` with the reason.
+
+The access table shows everyone against every API: their level, and whose account their runs use.

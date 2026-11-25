@@ -1,0 +1,46 @@
+---
+title: Add your first API
+description: Sign up, then add an API from its spec, an MCP server, or a public connector.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import Screenshot from '../../../components/Screenshot.astro';
+
+## Sign up
+
+<Steps>
+
+1. Go to [getmcpapi.com](https://getmcpapi.com) and choose **Start for free**.
+2. Enter your email. MCPAPI sends a sign-in link; there is no password.
+3. MCPAPI creates your workspace, with you as its owner.
+
+</Steps>
+
+The Free plan includes every public connector. To add your own APIs and MCP servers, start the paid plan; see [Plans and credits](/account/plans-and-credits/).
+
+## Enable a public connector
+
+[Public connectors](https://getmcpapi.com/connectors) are ready-made APIs and MCP servers, such as Stripe. Open **Public connectors** in the dashboard, enable one and add your key for it. Enabling a catalog API costs no credits.
+
+## Add your own API
+
+<Steps>
+
+1. Open **APIs → Add an API**.
+2. Paste the spec's URL, or upload the file. MCPAPI reads OpenAPI 3.x, Swagger 2.0 (one file or many) and Postman collections.
+3. Check the name, the base URL and how the API signs in. They are read from the spec: API keys, bearer tokens, HTTP Basic and OAuth 2.0.
+4. Add the key or sign in, and import. MCPAPI indexes every operation so your agent can search for it.
+
+</Steps>
+
+<Screenshot name="add-an-api" alt="The Add an API form with a spec URL filled in" />
+
+Importing costs 1 credit per 10 new or changed operations. Re-import any time: unchanged operations are free.
+
+## Add an MCP server
+
+Paste an MCP server's URL instead of a spec. MCPAPI connects to it (streamable HTTP), with a key or by signing in with OAuth, and lists its tools alongside your APIs. An MCP server's tools are re-read when you re-import it; nothing is rechecked on a schedule.
+
+## Next
+
+[Connect your agent](/getting-started/connect/).

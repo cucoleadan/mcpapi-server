@@ -1,0 +1,43 @@
+/* MCPAPI's yellow (the logo's #FD9E03) as Starlight's accent, in both themes. Links use the high shade, which is a
+   dark amber in light mode: yellow text on white is unreadable.
+   The greys are neutral, like the dashboard's, not Starlight's blue-tinted ones. */
+:root {
+	--sl-color-accent-low: #3a2500;
+	--sl-color-accent: #fd9e03;
+	--sl-color-accent-high: #ffd58a;
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #ededed;
+	--sl-color-gray-2: #c2c2c2;
+	--sl-color-gray-3: #8a8a8a;
+	--sl-color-gray-4: #575757;
+	--sl-color-gray-5: #383838;
+	--sl-color-gray-6: #262626;
+	--sl-color-black: #171717;
+}
+
+:root[data-theme='light'] {
+	--sl-color-accent-low: #fff0d1;
+	--sl-color-accent: #fd9e03;
+	--sl-color-accent-high: #7a4a00;
+	--sl-color-white: #171717;
+	--sl-color-gray-1: #262626;
+	--sl-color-gray-2: #383838;
+	--sl-color-gray-3: #575757;
+	--sl-color-gray-4: #8a8a8a;
+	--sl-color-gray-5: #c2c2c2;
+	--sl-color-gray-6: #ededed;
+	--sl-color-gray-7: #f7f7f7;
+	--sl-color-black: #ffffff;
+}
+
+/* Square corners, like the dashboard. */
+*,
+*::before,
+*::after {
+	border-radius: 0 !important;
+}
+
+/* Screenshots sit on the page like the dashboard's square, bordered panels. */
+.screenshot {
+	border: 1px solid var(--sl-color-gray-5);
+}
